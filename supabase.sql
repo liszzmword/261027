@@ -9,6 +9,11 @@ create table if not exists public.scores (
 );
 
 alter table public.scores enable row level security;
+grant select on public.scores to anon, authenticated;
+grant insert on public.scores to authenticated;
+grant usage on sequence public.scores_id_seq to authenticated;
+drop policy if exists "scores are publicly readable" on public.scores;
+drop policy if exists "users can insert their own scores" on public.scores;
 create policy "scores are publicly readable" on public.scores for select using (true);
 create policy "users can insert their own scores" on public.scores for insert with check (auth.uid() = user_id);
 
