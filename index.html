@@ -8,15 +8,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
 </head>
 <body>
   <main class="app-shell">
-    <header class="topbar">
+  <header class="topbar">
       <div class="brand"><span class="brand-mark">✦</span><span>NEON TETRIS</span></div>
-      <div class="status-pill"><i></i><span id="statusText">READY TO PLAY</span></div>
+      <div class="account-area"><span id="userEmail"></span><button id="logoutBtn" class="logout-btn hidden">LOG OUT</button><div class="status-pill"><i></i><span id="statusText">LOGIN REQUIRED</span></div></div>
     </header>
 
-    <section class="game-layout">
+    <section id="authPanel" class="auth-panel">
+      <div class="auth-copy"><p class="eyebrow">PLAYER ACCESS</p><h1>ENTER THE<br><span>ARCADE</span></h1><p>로그인하고 플레이 기록과 최고 점수를 저장하세요.</p></div>
+      <form id="authForm" class="auth-form"><input id="emailInput" type="email" placeholder="EMAIL" autocomplete="email" required><input id="passwordInput" type="password" placeholder="PASSWORD (6자 이상)" autocomplete="current-password" minlength="6" required><button id="authSubmit" type="submit">LOGIN</button><button id="authModeBtn" type="button" class="text-btn">계정이 없나요? 회원가입</button><p id="authMessage" class="auth-message"></p></form>
+    </section>
+
+    <section id="game-layout" class="game-layout locked">
       <aside class="side-panel left-panel">
         <div class="panel-card score-card">
           <p class="eyebrow">SCORE</p><strong id="score">000000</strong>
@@ -38,10 +44,13 @@
         <div class="panel-card stats-card"><div class="stat-block"><p class="eyebrow">LEVEL</p><strong id="level">01</strong></div><div class="stat-block"><p class="eyebrow">LINES</p><strong id="lines">000</strong></div></div>
         <div class="panel-card keys-card"><p class="eyebrow">CONTROLS</p><div class="key-row"><kbd>←</kbd><kbd>→</kbd><span>MOVE</span></div><div class="key-row"><kbd>↑</kbd><span>ROTATE</span></div><div class="key-row"><kbd>↓</kbd><span>SOFT DROP</span></div><div class="key-row"><kbd>SPACE</kbd><span>HARD DROP</span></div><div class="key-row"><kbd>P</kbd><span>PAUSE</span></div></div>
         <button id="restartBtn" class="restart-btn">↻ &nbsp; RESTART</button>
+        <div class="panel-card leaderboard"><p class="eyebrow">TOP SCORES</p><ol id="leaderboardList"><li>로그인하면 기록이 표시됩니다.</li></ol></div>
       </aside>
     </section>
     <footer>© 2026 NEON TETRIS <span>•</span> BUILT FOR THE NEXT MOVE</footer>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
