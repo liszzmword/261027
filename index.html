@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEON TETRIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>NEON TETRIS</span></div>
+      <div class="status-pill"><i></i><span id="statusText">READY TO PLAY</span></div>
+    </header>
+
+    <section class="game-layout">
+      <aside class="side-panel left-panel">
+        <div class="panel-card score-card">
+          <p class="eyebrow">SCORE</p><strong id="score">000000</strong>
+          <div class="divider"></div>
+          <div class="stat-row"><span>HIGH SCORE</span><b id="highScore">000000</b></div>
+        </div>
+        <div class="panel-card next-card">
+          <p class="eyebrow">NEXT BLOCK</p><div id="nextBoard" class="next-board"></div>
+        </div>
+        <div class="hint"><span class="hint-icon">✧</span><span>Clear lines to level up<br>and chase your high score.</span></div>
+      </aside>
+
+      <section class="board-wrap">
+        <div class="board-frame"><div id="board" class="board" aria-label="테트리스 게임 보드"></div><div id="overlay" class="overlay"><h1>NEON<br><span>TETRIS</span></h1><p>PRESS START TO PLAY</p><button id="startBtn">START GAME</button></div></div>
+        <div class="controls"><button class="control-btn" data-action="left">←</button><button class="control-btn" data-action="rotate">↻</button><button class="control-btn" data-action="right">→</button><button class="control-btn wide" data-action="drop">DROP <span>SPACE</span></button></div>
+      </section>
+
+      <aside class="side-panel right-panel">
+        <div class="panel-card stats-card"><div class="stat-block"><p class="eyebrow">LEVEL</p><strong id="level">01</strong></div><div class="stat-block"><p class="eyebrow">LINES</p><strong id="lines">000</strong></div></div>
+        <div class="panel-card keys-card"><p class="eyebrow">CONTROLS</p><div class="key-row"><kbd>←</kbd><kbd>→</kbd><span>MOVE</span></div><div class="key-row"><kbd>↑</kbd><span>ROTATE</span></div><div class="key-row"><kbd>↓</kbd><span>SOFT DROP</span></div><div class="key-row"><kbd>SPACE</kbd><span>HARD DROP</span></div><div class="key-row"><kbd>P</kbd><span>PAUSE</span></div></div>
+        <button id="restartBtn" class="restart-btn">↻ &nbsp; RESTART</button>
+      </aside>
+    </section>
+    <footer>© 2026 NEON TETRIS <span>•</span> BUILT FOR THE NEXT MOVE</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
